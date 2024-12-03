@@ -11,7 +11,10 @@ int main(int argc, char *argv[]) {
         while (*word) {
             printf("Porównywanie: %c oraz %c\n", *word, sign);
             if (*word == sign) {
-                printf("Ciąg znaków %s zawiera znak %c\n", original_word, sign);
+                while (word != argv[1]) {
+                    word--;
+                }
+                printf("Ciąg %s zawiera znak %c\n", word, sign);
                 return 0;
             }
             word++;
