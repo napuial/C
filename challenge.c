@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 int main(int argc, char *argv[]) {
 
@@ -13,7 +14,7 @@ int main(int argc, char *argv[]) {
         int word_one_length = strlen(word_one);
         int word_two_length = strlen(word_two);
 
-        int lengh_check = (word_one_length == word_two_length);
+        bool lengh_check = (word_one_length == word_two_length);
 
         if(lengh_check) {
             printf("Ciągi znaków są takie same.");
