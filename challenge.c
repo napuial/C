@@ -16,8 +16,10 @@ int main(int argc, char *argv[]) {
 
         bool lengh_check = (word_one_length == word_two_length);
 
+        printf("%d, %s\n", lengh_check, lengh_check ? "true" : "false");
+
         if(lengh_check) {
-            printf("Ciągi znaków są takie same.");
+            printf("Ciągi znaków są takie same. ");
         } else {
             printf("Ciągi znaków są różne.");
         }
