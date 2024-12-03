@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(int argc, char *argv[]) {
     if (argc != 3 ) {
@@ -6,15 +7,13 @@ int main(int argc, char *argv[]) {
         return 0;
     } else {
         char *word = argv[1];
+        int word_length = strlen(word);
         char sign = argv[2][0];
         char *original_word = word;
         while (*word) {
             printf("Porównywanie: %c oraz %c\n", *word, sign);
             if (*word == sign) {
-                while (word != argv[1]) {
-                    word--;
-                }
-                printf("Ciąg %s zawiera znak %c\n", word, sign);
+                printf("Ciąg %s zawiera znak %c\n", word - word_length, sign);
                 return 0;
             }
             word++;
