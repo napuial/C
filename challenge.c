@@ -2,23 +2,25 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
+
     if (argc != 3 ) {
         printf("Następnym razem podaj dwa ciągi znaków, a program się wykona :)\n");
         return 0;
     } else {
-        char *word = argv[1];
-        int word_length = strlen(word);
-        char sign = argv[2][0];
-        char *original_word = word;
-        while (*word) {
-            printf("Porównywanie: %c oraz %c\n", *word, sign);
-            if (*word == sign) {
-                printf("Ciąg %s zawiera znak %c\n", word - word_length, sign);
-                return 0;
-            }
-            word++;
+
+        char *word_one = argv[1];
+        char *word_two = argv[2];
+        int word_one_length = strlen(word_one);
+        int word_two_length = strlen(word_two);
+
+        int lengh_check = (word_one_length == word_two_length);
+
+        if(lengh_check) {
+            printf("Ciągi znaków są takie same.");
+        } else {
+            printf("Ciągi znaków są różne.");
         }
-        printf("Ciąg %s nie zawiera znaku %c\n", original_word, sign);
+
         return 0;
     }
 }
