@@ -1,29 +1,44 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
 
-int main(int argc, char *argv[]) {
+int main(void) {
 
-    if (argc != 3 ) {
-        printf("Następnym razem podaj dwa ciągi znaków, a program się wykona :)\n");
-        return 0;
-    } else {
+    FILE *file = fopen("plik.txt", "a");
 
-        char *word_one = argv[1];
-        char *word_two = argv[2];
-        int word_one_length = strlen(word_one);
-        int word_two_length = strlen(word_two);
-
-        bool lengh_check = (word_one_length == word_two_length);
-
-        printf("%d, %s\n", lengh_check, lengh_check ? "true" : "false");
-
-        if(lengh_check) {
-            printf("Ciągi znaków są takie same. ");
-        } else {
-            printf("Ciągi znaków są różne.");
-        }
-
-        return 0;
+    if (file == NULL) {
+        printf("Błąd przy tworzeniu pliku!\n");
+        return 1;
     }
+
+    fprintf(file, ":).\n");
+
+    fclose(file);
+
+    printf("Plik został utworzony i zapisano w nim tekst:\n");
+
+    file = fopen("plik.txt", "r");
+
+    if (file == NULL) {
+        printf("Błąd przy tworzeniu pliku!\n");
+        return 1;
+    }
+
+    char line[100];
+    while (fgets(line, sizeof(line), file) != NULL) {
+        printf("%s", line);
+    }
+
+    fclose(file);
+
+    file = fopen("plik.txt", "w");
+
+    if (file == NULL) {
+        printf("Błąd przy tworzeniu pliku!\n");
+        return 1;
+    }
+
+    fclose(file);
+
+    printf("Zastąpiono istniejący plik.\n");
+
+    return 0;
 }
